@@ -26,8 +26,83 @@ Please follow the `README.md` in each subdirectory for specific installation ins
 2.  **Backend**: `cd backend` -> `pip install -r requirements.txt`
 3.  **AI Engine**: `cd ai-engine` -> `pip install -r requirements.txt`
 
+## Team Collaboration Guide
+
+This project is set up for team collaboration. Use the following guide to work on your specific branch.
+
+### 1. Getting Started
+
+Clone the repository and move into the directory:
+
+```bash
+git clone https://github.com/vivekminipuri/AI-fake-news-detector.git
+cd ai-fake-news-detector
+```
+
+### 2. Switching to Your Branch
+
+We have pre-created branches for each team member. Run the following command matching your name:
+
+*   **Vivek**: `git checkout vivek`
+*   **Shiva**: `git checkout shiva`
+*   **Nikitha**: `git checkout nikitha`
+*   **Amaan**: `git checkout amaan`
+*   **Divya**: `git checkout divya`
+
+### 3. Syncing with Main
+
+Before starting work, always pull the latest changes from the `main` branch into your branch to ensure you have the latest code:
+
+```bash
+# Make sure you are on your branch (e.g., vivek)
+git checkout vivek
+
+# Pull changes from main
+git pull origin main
+```
+
+### 4. Installing Dependencies
+
+Depending on which folder you are working in, you need to install the specific dependencies.
+
+**Frontend (React/UI):**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+**Backend (API):**
+```bash
+cd backend
+python -m venv venv
+# Activate venv: .\venv\Scripts\activate (Windows) or source venv/bin/activate (Mac/Linux)
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+**AI Engine (ML Models):**
+```bash
+cd ai-engine
+pip install -r requirements.txt
+```
+
+### 5. Pushing Your Changes
+
+Once you have made changes, push them to your specific remote branch:
+
+```bash
+git add .
+git commit -m "Description of what I added"
+git push origin <your-branch-name>
+```
+
+---
+
 ## Development Workflow
 1.  **Clone** this repository.
-2.  **Create branches** for your features (e.g., `feature/login-page`, `feature/bert-model`).
-3.  **Commit often** and push to GitHub.
-4.  **Create Pull Requests** for code review.
+2.  **Checkout** your named branch.
+3.  **Pull** latest updates from `main`.
+4.  **Work** on your feature.
+5.  **Commit and Push** to your named branch.
+

@@ -19,3 +19,6 @@ venv/
 
 # Backend Secrets
 backend/app/core/firebase_credentials.json
+
+# Frontend Secrets
+frontend/src/firebase.ts

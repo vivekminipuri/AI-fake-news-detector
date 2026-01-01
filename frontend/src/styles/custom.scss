@@ -1,0 +1,446 @@
+// --- Color Palette (HSL for precision) ---
+$primary: #0ea5e9; // Sky 500
+$secondary: #8b5cf6; // Violet 500
+$accent: #22d3ee; // Cyan 400
+$dark-900: #0b1120; // Deep Navy
+$dark-800: #0f172a; // Slate 900
+$dark-700: #1e293b; // Slate 800
+$light: #f8fafc;
+$muted: #94a3b8;
+$emerald: #10b981;
+$violet: #8b5cf6;
+$indigo: #6366f1;
+$purple: #a855f7;
+$teal: #14b8a6;
+$rose: #e11d48;
+$amber: #f59e0b;
+$orange: #f97316;
+$pink: #db2777;
+
+// Bootstrap Overrides
+$body-bg: $dark-900;
+$body-color: $light;
+$primary-grad: linear-gradient(135deg, $primary, $secondary);
+$enable-gradients: true;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// --- Global Polish ---
+body {
+    background: radial-gradient(circle at 50% -20%, #1e293b 0%, $dark-900 100%);
+    min-height: 100vh;
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+// --- High-End Glassmorphism ---
+.glass-card {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// --- Typography ---
+.gradient-text {
+    background: $primary-grad;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// --- Buttons & Interactive ---
+.gradient-btn {
+    background: $primary-grad !important;
+    border: none !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3) !important;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, $secondary, $primary);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4) !important;
+
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.gradient-btn-emerald {
+    @extend .gradient-btn;
+    background: linear-gradient(135deg, $emerald, $teal) !important;
+    box-shadow: 0 4px 15px rgba($emerald, 0.3) !important;
+
+    &::before {
+        background: linear-gradient(135deg, $teal, $emerald);
+    }
+
+    &:hover {
+        box-shadow: 0 8px 25px rgba($emerald, 0.4) !important;
+    }
+}
+
+.gradient-btn-violet {
+    @extend .gradient-btn;
+    background: linear-gradient(135deg, $violet, $purple) !important;
+    box-shadow: 0 4px 15px rgba($violet, 0.3) !important;
+
+    &::before {
+        background: linear-gradient(135deg, $purple, $violet);
+    }
+
+    &:hover {
+        box-shadow: 0 8px 25px rgba($violet, 0.4) !important;
+    }
+}
+
+.gradient-btn-rose {
+    @extend .gradient-btn;
+    background: linear-gradient(135deg, $rose, $pink) !important;
+    box-shadow: 0 4px 15px rgba($rose, 0.3) !important;
+
+    &::before {
+        background: linear-gradient(135deg, $pink, $rose);
+    }
+
+    &:hover {
+        box-shadow: 0 8px 25px rgba($rose, 0.4) !important;
+    }
+}
+
+.gradient-btn-amber {
+    @extend .gradient-btn;
+    background: linear-gradient(135deg, $amber, $orange) !important;
+    box-shadow: 0 4px 15px rgba($amber, 0.3) !important;
+
+    &::before {
+        background: linear-gradient(135deg, $orange, $amber);
+    }
+
+    &:hover {
+        box-shadow: 0 8px 25px rgba($amber, 0.4) !important;
+    }
+}
+
+// --- Navbar Polish ---
+.navbar-glass {
+    background: rgba(11, 17, 32, 0.75) !important;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+
+    &.scrolled {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+        background: rgba(11, 17, 32, 0.9) !important;
+    }
+}
+
+// --- Bootstrap Component Overrides for Dark Mode ---
+.modal-content {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: $light;
+}
+
+.modal-header,
+.modal-footer {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-menu {
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+
+    .dropdown-item {
+        color: $light;
+
+        &:hover {
+            background: rgba($primary, 0.1);
+            color: $primary;
+        }
+    }
+}
+
+.form-control,
+.form-select {
+    background-color: rgba(15, 23, 42, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: $light !important;
+
+    &:focus {
+        background-color: rgba(15, 23, 42, 0.8) !important;
+        border-color: rgba($primary, 0.4) !important;
+        box-shadow: 0 0 0 0.25rem rgba($primary, 0.1) !important;
+    }
+
+    &::placeholder {
+        color: rgba($light, 0.3);
+    }
+}
+
+.input-group-text {
+    background-color: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: $muted;
+}
+
+.alert {
+    background-color: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: $light;
+
+    &.alert-danger {
+        border-color: rgba($danger, 0.2);
+        color: lighten($danger, 15%);
+    }
+
+    &.alert-success {
+        border-color: rgba($success, 0.2);
+        color: lighten($success, 15%);
+    }
+}
+
+// Ensure cards don't have default white bg
+.card {
+    background-color: transparent;
+}
+
+// --- Atmospheric Blobs ---
+.hero-blob {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+    animation: blobFloat 20s infinite alternate;
+}
+
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 30px) scale(1.1);
+    }
+}
+
+// --- Custom Scrollbar ---
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $dark-900;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $dark-700;
+    border-radius: 10px;
+
+    &:hover {
+        background: $muted;
+    }
+}
+
+// --- Utilities ---
+.text-gradient-cyan {
+    background: linear-gradient(to right, $accent, $primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+    background: linear-gradient(to right, $emerald, $teal);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-violet {
+    background: linear-gradient(to right, $violet, $purple);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-rose {
+    background: linear-gradient(to right, $rose, $pink);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber {
+    background: linear-gradient(to right, $amber, $orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+// --- Advanced Micro-animations ---
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer-effect {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 3s infinite linear;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba($primary, 0.3);
+    border-color: rgba($primary, 0.5) !important;
+}
+
+.stagger-in>* {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeUpItem 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUpItem {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@for $i from 1 through 8 {
+    .stagger-in>*:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.12}s;
+    }
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.transition-all {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-text-primary:hover {
+    color: $primary !important;
+}
+
+.hover-text-danger:hover {
+    color: $danger !important;
+    filter: drop-shadow(0 0 8px rgba(255, 71, 87, 0.4));
+}
+
+.hover-text-violet:hover {
+    color: #a78bfa !important;
+    filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.4));
+}
+
+.fill-danger {
+    fill: $danger;
+}
+
+.focus-within-primary:focus-within {
+    border-color: rgba($primary, 0.4) !important;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+}
+
+.border-opacity-10 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.bg-glass {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.rounded-5 {
+    border-radius: 2rem !important;
+}
+
+// Color Utility Classes
+.text-emerald-400 {
+    color: #34d399 !important;
+}
+
+.text-violet-400 {
+    color: #a78bfa !important;
+}
+
+.bg-emerald-500 {
+    background-color: #10b981 !important;
+}
+
+.bg-violet-500 {
+    background-color: #8b5cf6 !important;
+}
+
+.bg-indigo-500 {
+    background-color: #6366f1 !important;
+}
+
+.text-rose-400 {
+    color: #fb7185 !important;
+}
+
+.text-amber-400 {
+    color: #fbbf24 !important;
+}
+
+.bg-rose-500 {
+    background-color: #e11d48 !important;
+}
+
+.bg-amber-500 {
+    background-color: #f59e0b !important;
+}

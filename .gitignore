@@ -16,3 +16,6 @@ venv/
 # IDE
 .vscode/
 .idea/
+
+# Backend Secrets
+backend/app/core/firebase_credentials.json
